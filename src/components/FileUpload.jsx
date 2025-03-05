@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FileUpload = ({ setResult, setError }) => {
+const FileUpload = ({ setResult, setError, setSelectedDate, setSelectedTime, selectedDate, selectedTime }) => {
     const API_URL = import.meta.env.VITE_API_URL || "localhost:80";
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -9,9 +9,22 @@ const FileUpload = ({ setResult, setError }) => {
         setFile(event.target.files[0]);
     };
 
+    const handleDateChange = (event) => {
+        setSelectedDate(event.target.value);
+    };
+
+    const handleTimeChange = (event) => {
+        setSelectedTime(event.target.value);
+    };
+
     const handleUpload = async () => {
         if (!file) {
             setError('Please select a file to upload.');
+            return;
+        }
+
+        if (!selectedDate || !selectedTime) {
+            setError('Please select both date and time.');
             return;
         }
 
@@ -48,6 +61,24 @@ const FileUpload = ({ setResult, setError }) => {
                 type="file"
                 data-testid="fileInput"
                 onChange={handleFileChange}
+                className="block w-full mb-4 text-sm text-gray-700 border border-gray-300 rounded p-2"
+            />
+            <p>
+                Select the ECG start date
+            </p>
+            <input
+                type="date"
+                value={selectedDate}
+                onChange={handleDateChange}
+                className="block w-full mb-4 text-sm text-gray-700 border border-gray-300 rounded p-2"
+            />
+            <p>
+                Select the ECG start time
+            </p>
+            <input
+                type="time"
+                value={selectedTime}
+                onChange={handleTimeChange}
                 className="block w-full mb-4 text-sm text-gray-700 border border-gray-300 rounded p-2"
             />
 
