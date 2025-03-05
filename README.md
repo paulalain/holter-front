@@ -21,9 +21,10 @@ functionalities:
 
 Cardiologs should be able to recover your work, understand it, trust it easily, maintain it, make changes to it, etc
 
----
-
 ## Solution
+
+The final solution can be tested here: [https://holter-front.onrender.com](https://holter-front.onrender.com)
+It's on a free plan, it could take up to 45s to launch the server (and another 45s for the backend).
 
 I decided to build a React app separate from the backend to improve maintainability. To speed up development, I chose Vite.js for its fast and lightweight dev server, along with Tailwind CSS to minimize the need for writing custom styles.
 
@@ -32,6 +33,8 @@ The app consists of a simple page with three components: a file upload component
 ---
 
 ## Results with the given file
+
+<img width="1139" alt="Capture d’écran 2025-03-05 à 15 55 29" src="https://github.com/user-attachments/assets/24052ac0-69e5-4cd0-9c90-a6b62eb3d377" />
 
 ---
 
